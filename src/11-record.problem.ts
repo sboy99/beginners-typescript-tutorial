@@ -1,36 +1,36 @@
 import { expect, it } from "vitest";
 
 const createCache = () => {
-  const cache = {};
+    const cache: Record<string, unknown> = {};
 
-  const add = (id: string, value: string) => {
-    cache[id] = value;
-  };
+    const add = (id: string, value: string) => {
+        cache[id] = value;
+    };
 
-  const remove = (id: string) => {
-    delete cache[id];
-  };
+    const remove = (id: string) => {
+        delete cache[id];
+    };
 
-  return {
-    cache,
-    add,
-    remove,
-  };
+    return {
+        cache,
+        add,
+        remove,
+    };
 };
 
 it("Should add values to the cache", () => {
-  const cache = createCache();
+    const cache = createCache();
 
-  cache.add("123", "Matt");
+    cache.add("123", "Matt");
 
-  expect(cache.cache["123"]).toEqual("Matt");
+    expect(cache.cache["123"]).toEqual("Matt");
 });
 
 it("Should remove values from the cache", () => {
-  const cache = createCache();
+    const cache = createCache();
 
-  cache.add("123", "Matt");
-  cache.remove("123");
+    cache.add("123", "Matt");
+    cache.remove("123");
 
-  expect(cache.cache["123"]).toEqual(undefined);
+    expect(cache.cache["123"]).toEqual(undefined);
 });
